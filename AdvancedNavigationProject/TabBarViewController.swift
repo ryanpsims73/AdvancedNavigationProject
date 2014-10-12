@@ -56,7 +56,7 @@ class TabBarViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(containerView: UIScrollView) {
-        println("did scroll")
+        //println("did scroll")
         
         indicatorChip.frame.origin.x = convertValue(containerView.contentOffset.x, r1Min: 0.0, r1Max: 640.0, r2Min: 14.0, r2Max: 245.0)
         
@@ -65,25 +65,26 @@ class TabBarViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func onFirstButton(sender: AnyObject) {
         println("onFirstButton")
         activeTab = 1
+        
+        self.containerView.scrollRectToVisible(self.firstViewController.view.frame, animated: true)
 
-        containerView.frame = firstViewController.view.frame
-        containerView.addSubview(firstViewController.view)
+        //containerView.frame = firstViewController.view.frame
+        //containerView.addSubview(firstViewController.view)
     }
     
     @IBAction func onSecondButton(sender: AnyObject) {
-        println("onFirstButton")
+        println("onSecondButton")
         activeTab = 2
-        containerView.frame = secondViewController.view.frame
-        containerView.addSubview(secondViewController.view)
+
+        self.containerView.scrollRectToVisible(self.secondViewController.view.frame, animated: true)
     }
     
     @IBAction func onThirdButton(sender: AnyObject) {
-        println("onFirstButton")
+        println("onThirdButton")
         activeTab = 3
-        containerView.frame = thirdViewController.view.frame
-        containerView.addSubview(thirdViewController.view)
+        
+        self.containerView.scrollRectToVisible(self.thirdViewController.view.frame, animated: true)
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
